@@ -52,7 +52,7 @@ return{
 
 }
 
-const checkFeatured = (project : any) => {
+const checkFeatured = (project: any) => {
   return project.isFeatured === true;
 }
 

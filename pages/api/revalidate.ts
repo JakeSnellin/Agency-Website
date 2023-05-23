@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+//http://localhost:3000/api/revalidate?path=/&secret=mysecret
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Check for secret to confirm this is a valid request
@@ -6,15 +7,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(401).json({ message: "Invalid token" });
   }
 
-  if (!req.body) {
-    return res.status(422).json({ message: "Invalid request body" });
-  }
+  const path = req.query.path as string;
 
-  try {
-    const slug = req.body.slug;
-    await res.revalidate(`/${slug}`);
-    return res.status(200).json({ revalidated: true });
-  } catch (err) {
-    return res.status(500).send("Error revalidating" + err);
+  await res.revalidate(path);
+
+  return res.json({ revalidated: true })
+
+  /*try{
+    const body = req.body;
+    if(!body){
+      return res.status(422).json({ message: "Invalid request body" });
     }
+    const slug = body.slug;
+    if(slug){
+      console.log(slug);
+      await res.revalidate(`/thoughts/${slug}`);
+      return res.status(200).json({ revalidated: true });
+    }
+  }
+  catch (err) {
+    return res.status(500).send("Error revalidating" + err);
+    }*/
 }
