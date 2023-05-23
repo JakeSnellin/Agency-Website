@@ -11,7 +11,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    //await res.revalidate('/');
     const slug = req.body.slug;
     await res.revalidate(`/${slug}`);
     return res.status(200).json({ revalidated: true });
