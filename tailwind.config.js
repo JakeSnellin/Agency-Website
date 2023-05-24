@@ -26,7 +26,23 @@ module.exports = {
 
       lineHeight: {
         'leading-h1': '4.4rem',
+        'leadin-h2': '3.3rem',
         'leading-h3': '2.2rem',
+        'leading-h4': '2.25rem',
+        'leading-h5': '1.688rem',
+        'leading-body': '1.5rem',
+        'leading-caption': '0.875rem',
+        'leading-m1': '2.22rem',
+        'leading-m2': '1.969rem',
+        'leading-m3': '1.725rem',
+        'leading-m4': '1.763rem',
+        'leading-m5': '1.688rem',
+        'leading-m-body': '1.5rem',
+        'leading-m-caption': '1.313'
+      },
+
+      height: {
+        '678': '42.375rem'
       }
     },
   },
