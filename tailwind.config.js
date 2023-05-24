@@ -7,11 +7,27 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontSize: {
+        m1: '2rem',
+        m2: '1.75rem',
+        m3: '1.5rem',
+        m4: '1.25rem',
+        m5: '1.125rem',
+        'm-body': '1rem',
+        'm-caption': '0.875',
+        h1: '4rem',
+        h2: '3rem',
+        h3: '2rem',
+        h4: '1.5rem',
+        h5: '1.125rem',
+        body: '1rem',
+        caption: '0.875rem'
       },
+
+      lineHeight: {
+        'leading-h1': '4.4rem',
+        'leading-h3': '2.2rem',
+      }
     },
   },
   plugins: [],

@@ -1,24 +1,7 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { gql, GraphQLClient } from 'graphql-request';
-
-interface IProjectPage {
-  projectPage: {
-  id: string;
-  slug: string;
-  image: {
-    url: string
-  };
-  projectHeading: string;
-  disciplines: string;
-  clientDiscriptionHeading: string;
-  clientDescription: string;
-  taskDescription: string;
-  blockQuote: string;
-  citation: string;
-  processDescription: string;
-  captionText: string;
-};
-}
+import { IProjectPage } from '../../interfaces/project_interfaces'
+import { IProjectSlug } from "../../interfaces/project_interfaces";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -62,14 +45,6 @@ export default function Project(data: IProjectPage) {
       <div><h1>{data.projectPage.projectHeading}</h1></div>
     </>
   )
-}
-
-export interface IProjectSlug{
-  project: {
-    projectList: {
-      slug: string;
-    }[]
-  }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

@@ -1,25 +1,10 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { gql, GraphQLClient } from 'graphql-request'
+import Image from 'next/image'
+import { IProjectItem } from '../interfaces/project_interfaces'
 
 const inter = Inter({ subsets: ['latin'] })
-
-interface IProjectItem {
-  project: {
-    projectList: {
-      id: string;
-      slug: string;
-      thumbnail: {
-        url: string;
-      }
-      title: string;
-      disciplines: string;
-      isFeatured: boolean;
-      imageAlt: string;
-    }[];
-  }
-}
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -66,6 +51,7 @@ export default function Home(response: IProjectItem) {
   <>
    <div><h1 className='text-3xl font-bold underline'>Hello World</h1></div>
    <div>{headers}</div>
+   <Image src={response.project.projectList[0].thumbnail.url} alt={response.project.projectList[0].imageAlt} width={200} height={200} ></Image>
    </>
   )
 }
