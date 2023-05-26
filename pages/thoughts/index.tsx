@@ -1,30 +1,29 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from "next";
 import { gql, GraphQLClient } from 'graphql-request';
-import { IProjectItem } from '../../interfaces/project_interfaces'
+import { IThought } from '../../interfaces/thought_interfaces';
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
 export const getStaticProps: GetStaticProps = async () => {
 
   const query = gql`
-  query Project {
-    project(where: {id: "clhyv0zrjln9j0cmikv5txplr"}) {
-    projectList {
-      id
-      slug
-      thumbnail {
-        url
+  query Thought {
+    thought(where: {id: "cli2y5dww4x4c0cmm99b20wjc"}) {
+      thoughtList {
+        id
+        slug
+        postHeading
+        postThumbnail{
+          url
+        }
+        postDate
+        imageAlt
       }
-      title
-      disciplines
-      isFeatured
-      imageAlt
     }
-  }
-}`;
+  }`;
 
-const response: IProjectItem = await client.request(query);
+const response: IThought = await client.request(query);
 
 console.log(response);
 
@@ -34,11 +33,11 @@ return{
 
 }
 
-export default function Thoughts(response: IProjectItem) {
+export default function Thoughts(response: IThought) {
   return (
     <>
     <div>Thoughts</div>
-    <div>{response.project.projectList[0].title}</div>
+    <div>{response.thought.thoughtList[0].postHeading}</div>
    </>
   )
 }

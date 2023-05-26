@@ -1,6 +1,6 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { gql, GraphQLClient } from 'graphql-request';
-import { IProjectSlug } from "..//..//interfaces/project_interfaces";
+import { IThoughtSlug } from "../../interfaces/thought_interfaces";
 import { IThoughtPage } from "../../interfaces/thought_interfaces";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     query ThoughtPage($slug: String!) {
         thoughtPage(where: {slug: $slug}) {
           id
-          thoughtHeading
+          postHeading
           postDate
           postImage {
             url
@@ -31,20 +31,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () =>{
     
     const query = gql`
-    query Project {
-      project(where: {id: "clhyv0zrjln9j0cmikv5txplr"}) {
-      projectList {
-        slug
+    query Thought {
+      thought(where: {id: "cli2y5dww4x4c0cmm99b20wjc"}) {
+        thoughtList {
+          slug
+        }
       }
-    }
-  }`;
+    }`;
 
-      const response : IProjectSlug = await client.request(query);
+      const response : IThoughtSlug = await client.request(query);
 
       console.log(response);
 
-      const paths = response.project.projectList.map((project) =>({
-        params: {slug: project.slug}
+      const paths = response.thought.thoughtList.map((thought) =>({
+        params: {slug: thought.slug}
       }))
 
       return {
@@ -55,6 +55,6 @@ export const getStaticPaths: GetStaticPaths = async () =>{
 
 export default function Thought(data: IThoughtPage) {
     return (
-      <div><h1>{data.thoughtPage.thoughtHeading}</h1></div>
+      <div><h1>{data.thoughtPage.postHeading}</h1></div>
     )
   }

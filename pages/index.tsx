@@ -3,6 +3,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { gql, GraphQLClient } from 'graphql-request'
 import Image from 'next/image'
 import { IProjectItem } from '../interfaces/project_interfaces'
+import Hero from '../components/Hero'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -43,15 +44,14 @@ const checkFeatured = (project: any) => {
 
 export default function Home(response: IProjectItem) {
 
-  const headers = response.project.projectList.filter(checkFeatured).map((project) =>
-    <div key={project.id}><h1>{project.title}</h1></div>
-  )
+  const projects = response.project.projectList.filter(checkFeatured).map((project) =>
+  <div key={project.id}><div><Image src={project.thumbnail.url} alt={project.imageAlt} width={1200} height={675}/></div><div className='pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]'><h5 className='text-cream text-m5 inline-block leading-h5 pb-2 font-main font-m5'>{project.title}</h5><p className='text-grey text-m-caption font-m-caption leading-m-caption font-main'>{project.disciplines}</p></div></div>
+);
 
   return (
   <>
-   <div><h1 className='text-3xl font-bold underline'>Hello World</h1></div>
-   <div>{headers}</div>
-   <Image src={response.project.projectList[0].thumbnail.url} alt={response.project.projectList[0].imageAlt} width={200} height={200} ></Image>
+    <Hero></Hero>
+    <div>{projects}</div>
    </>
   )
 }
