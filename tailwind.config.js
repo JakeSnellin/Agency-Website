@@ -45,12 +45,15 @@ module.exports = {
       height: {
         '50': '3.125rem',
         '678': '42.375rem',
-        'logo-height': '2.125rem',
+        '34': '2.125rem',
+        '56': '3.375rem'
       },
 
       width: {
-        'logo-width': '2.125rem',
+        '34': '2.125rem',
         'hero': '15.938rem',
+        '19': '1.188rem',
+        '56': '3.375rem'
       },
 
       colors: {
@@ -58,6 +61,7 @@ module.exports = {
         'orange': '#f2994a',
         'cream': '#fdfcf3',
         'grey': '#a9a9a9',
+        'grad-orange': '#E38F46' 
       },
 
       margin: {
@@ -66,7 +70,10 @@ module.exports = {
         '35': '2.188rem',
         '53': '3.313rem',
         '59': '3.688rem',
-        '62': '3.875rem'
+        '62': '3.875rem',
+        '60': '3.75rem',
+        '56': '3.5rem',
+        '34': '2.125rem'
       },
 
       fontWeight: {
