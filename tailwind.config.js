@@ -1,101 +1,131 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontSize: {
-        m1: '2rem',
-        m2: '1.75rem',
-        m3: '1.5rem',
-        m4: '1.25rem',
-        m5: '1.125rem',
-        'm-body': '1rem',
-        'm-caption': '0.875rem',
-        h1: '4rem',
-        h2: '3rem',
-        h3: '2rem',
-        h4: '1.5rem',
-        h5: '1.125rem',
-        body: '1rem',
-        caption: '0.875rem'
+        m1: "2rem",
+        m2: "1.75rem",
+        m3: "1.5rem",
+        m4: "1.25rem",
+        m5: "1.125rem",
+        "m-body": "1rem",
+        "m-caption": "0.875rem",
+        h1: "4rem",
+        h2: "3rem",
+        h3: "2rem",
+        h4: "1.5rem",
+        h5: "1.125rem",
+        body: "1rem",
+        caption: "0.875rem",
       },
 
       lineHeight: {
-        'm1': '2.22rem',
-        'm2': '1.969rem',
-        'm3': '1.725rem',
-        'm4': '1.763rem',
-        'm5': '1.688rem',
-        'm-body': '1.5rem',
-        'm-caption': '1.313rem',
-        'h1': '4.4rem',
-        'h2': '3.3rem',
-        'h3': '2.2rem',
-        'h4': '2.25rem',
-        'h5': '1.688rem',
-        'body': '1.5rem',
-        'caption': '0.875rem',
-        'hero': '1.969rem'
+        21.6: "21.6px",
+        31.5: "31.5px",
+        27: "27px",
+        21: "21px",
+        32.9: "32.9px",
+        24: "24px",
+        27.6: "27.6px",
+        35.52: "35.52px",
+        28.2: "28.2px",
       },
 
       height: {
-        '50': '3.125rem',
-        '678': '42.375rem',
-        '34': '2.125rem',
-        '56': '3.375rem'
+        50: "3.125rem",
+        678: "42.375rem",
+        34: "2.125rem",
+        56: "3.375rem",
+        0.5: "0.031rem",
+        25: "1.563rem",
+        24: "1.5rem",
+        579: "36.188rem",
+        617: "38.563rem",
+        612: "38.25rem",
       },
 
       width: {
-        '34': '2.125rem',
-        'hero': '15.938rem',
-        '19': '1.188rem',
-        '56': '3.375rem'
+        34: "2.125rem",
+        hero: "15.938rem",
+        56: "3.375rem",
+        21: "1.313rem",
+        1440: "90rem",
       },
 
       colors: {
-        'blue': '#c6e4f8',
-        'orange': '#f2994a',
-        'cream': '#fdfcf3',
-        'grey': '#a9a9a9',
-        'grad-orange': '#E38F46' 
+        blue: "#c6e4f8",
+        orange: "#f2994a",
+        cream: "#fdfcf3",
+        grey: "#A9A9A9",
+        "dark-grey": "#232222",
+        "#413F3F": "#413F3F",
+        "bg-grey": "#1F1E1E",
+        "grad-orange": "#E38F46",
+        "grad-blue": "#C6E4F8",
+        "light-grey": "#6B6B6B",
       },
 
       margin: {
-        '13': '0.813rem',
-        '30': '1.875rem',
-        '35': '2.188rem',
-        '53': '3.313rem',
-        '59': '3.688rem',
-        '62': '3.875rem',
-        '60': '3.75rem',
-        '56': '3.5rem',
-        '34': '2.125rem'
+        13: "13px",
+        30: "30px",
+        35: "35px",
+        53: "53px",
+        59: "59px",
+        62: "62px",
+        60: "60px",
+        56: "56px",
+        34: "34px",
+        16: "16px",
+        17: "17px",
+        71: "71px",
+        77: "77px",
+        26: "26px",
+        15: "15px",
+        27: "27px",
+        14: "14px",
+        32: "32px",
+        33: "33px",
+        28: "28px",
       },
 
       fontWeight: {
-        'm2': '250',
-        'm5': '400',
-        'm-caption': '300'
+        250: "250",
+        400: "400",
+        "m-caption": "300",
       },
 
       minWidth: {
-        'hero': '15.938rem'
+        hero: "15.938rem",
       },
 
       padding: {
-        'hero': '1.25rem',
-        '18': '1.125rem',
-        '65': '4.063rem'
+        hero: "20px",
+        18: "18px",
+        65: "65px",
+        23: "23px",
+        13: "13px",
+        12: "12px",
+        74: "74px",
+        94: "94px",
+        98: "98px",
+        81: "81px",
+        97: "97px",
+        12: "12px",
       },
 
       fontFamily: {
-        'main': ['Lab Grotesque']
-      }
+        main: ["LabGrotesque-Light"],
+      },
+
+      gap: {
+        35: "35px",
+      },
     },
   },
   plugins: [],
-}
+};
