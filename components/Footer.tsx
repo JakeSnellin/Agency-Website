@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="footer bg-dark-grey h-579">
+    <footer className="footer bg-grey-2 h-579">
       <div className="footer__inner">
         <div className="ml-8 mr-8">
           <div className="logo h-56 w-56 relative inline-block mb-34 mt-60">
@@ -44,7 +44,7 @@ export default function Footer() {
           </ul>
           <div>
             <div className="flex mt-56 items-center gap-12">
-              <div className="social-media flex gap-5">
+              <div className="social-media flex gap-17">
                 <div className="w-8 h-8 relative flex items-center justify-center">
                   <Image
                     className="object-contain"
@@ -88,42 +88,64 @@ export default function Footer() {
                   </a>
                 </div>
               </div>
-              <div className="return-container">
-                <Link href="#" className="return-container__link">
+              <Link
+                href="#"
+                className="return-container flex items-center gap-2"
+              >
+                <div>
                   <p className="text-cream font-light font-main leading-24 text-m4">
                     Back to top
                   </p>
-                </Link>
-                <div className="return-container__icon"></div>
-              </div>
+                </div>
+                <div>
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="white"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
             </div>
             <div className="relative w-full h-25 bg-gradient-to-r from-grad-blue">
-              <div className="w-full h-24 bg-dark-grey absolute top-0 left-0"></div>
+              <div className="w-full h-24 bg-grey-2 absolute top-0 left-0"></div>
             </div>
           </div>
         </div>
         <div className="mr-16 ml-8 leading-24">
           <div className="copyright-notice">
-            <p className="text-m-caption text-grey font-main mt-5 ">
+            <p className="text-m-caption text-grey-6 font-main mt-5">
               © 2022 Lowein-Levy Ltd. All rights reserved.
             </p>
           </div>
           <ul className="legal flex mt-5 mb-71">
             <li className="legal__terms">
               <Link href="/terms">
-                <p className="text-m-caption text-grey font-main mr-5">Terms</p>
+                <p className="text-m-caption text-grey-6 font-main mr-5">
+                  Terms
+                </p>
               </Link>
             </li>
             <li className="legal__privacy">
               <Link href="/privacy">
-                <p className="text-m-caption text-grey font-main mr-5">
+                <p className="text-m-caption text-grey-6 font-main mr-5">
                   Privacy
                 </p>
               </Link>
             </li>
             <li className="legal__cookies">
               <Link href="/cookies">
-                <p className="text-m-caption text-grey font-main">Cookies</p>
+                <p className="text-m-caption text-grey-6 font-main">Cookies</p>
               </Link>
             </li>
           </ul>

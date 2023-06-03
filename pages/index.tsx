@@ -55,10 +55,10 @@ export default function Home(response: IProjectItem) {
           />
         </div>
         <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
-          <span className="mr-1 text-grey text-m5 leading-27 pb-2 font-main font-400">
+          <span className="mr-1 text-grey m5 leading-27 pb-2 font-main">
             Project
           </span>
-          <h5 className="text-cream text-m5 inline-block leading-27 pb-2 font-main font-400">
+          <h5 className="text-cream m5 inline-block leading-27 pb-2 font-main">
             {project.title}
           </h5>
           <p className="text-grey text-m-caption font-m-caption leading-21 font-main">

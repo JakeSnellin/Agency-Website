@@ -61,13 +61,14 @@ module.exports = {
         blue: "#c6e4f8",
         orange: "#f2994a",
         cream: "#fdfcf3",
-        grey: "#A9A9A9",
-        "dark-grey": "#232222",
-        "#413F3F": "#413F3F",
-        "bg-grey": "#1F1E1E",
         "grad-orange": "#E38F46",
         "grad-blue": "#C6E4F8",
-        "light-grey": "#6B6B6B",
+        grey: "#A9A9A9",
+        "grey-2": "#232222",
+        "grey-3": "#413F3F",
+        "grey-4": "#1F1E1E",
+        "grey-5": "#6B6B6B",
+        "grey-6": "#828282",
       },
 
       margin: {
@@ -124,6 +125,7 @@ module.exports = {
 
       gap: {
         35: "35px",
+        17: "17px",
       },
     },
   },

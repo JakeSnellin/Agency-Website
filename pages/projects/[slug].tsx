@@ -99,8 +99,8 @@ export default function Project(data: IProjectPage) {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className="bg-bg-grey relative">
-        <div className="absolute bottom-0 left-0 bg-light-grey h-px w-full"></div>
+      <div className="bg-grey-4 relative">
+        <div className="absolute bottom-0 left-0 bg-grey-3 h-px w-full"></div>
         <ul className="flex font-main text-blue pt-12 pl-23 gap-35">
           <li className="h-10 relative">
             <h5 className="font-250 leading-27 text-m5">Overview</h5>
@@ -120,9 +120,7 @@ export default function Project(data: IProjectPage) {
         </h1>
         <hr className="border-t-[0.5px] border-white mb-4"></hr>
         <div>
-          <h5 className="leading-27 font-400 text-m5 text-blue mb-2">
-            Disciplines Covered
-          </h5>
+          <h5 className="leading-27 m5 text-blue mb-2">Disciplines Covered</h5>
           <div className="text-white text-m4 leading-28.2 font-250 mb-53">
             {
               <div
@@ -132,7 +130,7 @@ export default function Project(data: IProjectPage) {
               ></div>
             }
           </div>
-          <div className="leading-27 text-blue font-400 text-m5">
+          <div className="leading-27 text-blue m5">
             <h5 className="mb-2">
               {data.projectPage.clientDiscriptionHeading}
             </h5>
@@ -178,7 +176,7 @@ export default function Project(data: IProjectPage) {
               style={{ objectFit: "cover" }}
             ></Image>
           </div>
-          <div className="leading-27 text-blue font-400 text-m5">
+          <div className="leading-27 text-blue m5">
             <h5 className="mb-2">
               {data.projectPage.clientDiscriptionHeading}
             </h5>
@@ -204,7 +202,7 @@ export default function Project(data: IProjectPage) {
           </div>
         </div>
       </div>
-      <section className=" bg-cream text-#413F3F">
+      <section className=" bg-cream text-grey-3">
         <div className="ml-17 mr-15">
           <h2 className="text-m2 font-250 leading-31.5 mb-4 pt-74">Process</h2>
           <h4 className="text-m4 font-250 leading-28.2 pb-94">

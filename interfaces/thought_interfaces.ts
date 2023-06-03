@@ -1,14 +1,44 @@
+import { RichTextContent } from "@graphcms/rich-text-types";
+
+export interface IRichText {
+  thoughtPage: {
+    post: {
+      raw: {
+        children: {
+          type: string;
+          title: string;
+          altText: string;
+          src: string;
+          handle: string;
+          text: string;
+          children: {
+            text: string;
+          }[];
+        }[];
+      };
+    };
+  };
+}
+
 export interface IThoughtPage {
   thoughtPage: {
     id: string;
     slug: string;
     postHeading: string;
     postDate: string;
-    postImage: {
-      url: string;
-    };
-    postText: string;
+    captionText001: string;
+    captionText002: string;
   };
+  children: {
+    type: string;
+    title: string;
+    altText: string;
+    src: string;
+    handle: string;
+    children: {
+      text: string;
+    }[];
+  }[];
 }
 
 export interface IThought {
@@ -24,6 +54,7 @@ export interface IThought {
       imageAlt: string;
     }[];
   };
+  thoughtCount: number;
 }
 
 export interface IThoughtSlug {
