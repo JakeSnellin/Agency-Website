@@ -18,8 +18,8 @@ export default function Services() {
             to rainbow rhythms from peep show.
           </p>
         </div>
-        <div className="w-[61.25%] h-[95.76271186440678%] absolute top-[460px] left-0 z-[-1]">
-          <div className="relative h-0 w-full pt-[100%]">
+        <div className="w-[61.25%] absolute top-[460px] left-0 z-[-1]">
+          <div className="relative h-0 w-full pt-[95.76271186440678%]">
             <Image
               src="/../public/paintbg.png"
               alt="abstract paint background"

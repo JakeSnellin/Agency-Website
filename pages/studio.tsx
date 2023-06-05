@@ -1,34 +1,62 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Studio() {
   return (
-    <div className="md:flex h-678">
-      <div className="md:flex flex-wrap content-between">
-        <h1 className="text-m1 md:text-h1/leading-h1 w-full">Studio</h1>
-        <div>
-          <h3 className="text-m3 md:text-h3/leading-h3">Contact</h3>
-          <h4 className="text-m4 md:text-h4/leading-h4">
-            Email - email@email.com
+    <div>
+      <div className="font-main">
+        <div className="ml-13 mr-16">
+          <h1 className="text-blue text-m1 font-250 leading-35.52 mb-[24px] mt-[79px]">
+            Studio
+          </h1>
+          <h4 className="text-grey-7 text-m4 leading-28.2 font-250 mb-[84px]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore.
           </h4>
-          <h4 className="text-m4 md:text-h4/leading-h4">Phone - 07702139052</h4>
+          <div>
+            <div className="flex gap-5 w-[71.25%]">
+              <div className="w-[46.41148325358852%]">
+                <div className="w-full h-0 pt-[104.1237113402062%] relative">
+                  <div>
+                    <Image
+                      src="/../public/studio_img.png"
+                      alt="picture of designer"
+                      fill={true}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="w-[46.41148325358852%]">
+                <div className="w-full h-0 pt-[104.1237113402062%] relative">
+                  <Image
+                    src="/../public/studio_img.png"
+                    alt="picture of designer"
+                    fill={true}
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="md:flex flex-wrap content-between">
-        <h4 className="text-m4 md:text-h4/leading-h4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore.
-        </h4>
-        <div className="h-36">
-          <div className="bg-red-500 h-36 w-36 inline-block"></div>
-          <div className="bg-blue-500 h-36 w-36 inline-block"></div>
+        <div className="bg-cream pt-[88px] pl-4 pr-[17px] pb-[172px] mt-[-32px]">
+          <div className="text-black">
+            <h3 className="text-m3 font-250 leading-27.6 mb-3">Contact</h3>
+            <h3 className="text-m3 font-250 leading-27.6 mb-[51px]">
+              Please get in touch. We are based in London but work with
+              international clients.
+            </h3>
+            <h4 className="text-m4 font-250 leading-28.2 mb-15">
+              Email - email@email.com
+            </h4>
+            <h4 className="text-m4 font-250 leading-28.2">
+              Phone - 07702139052
+            </h4>
+          </div>
         </div>
-        <h3 className="text-m4 md:text-h4/leading-h4">
-          Please get in touch. We are based in London but work with
-          international clients. Please get in touch. We are based in London but
-          work with international clients.
-        </h3>
       </div>
     </div>
   );

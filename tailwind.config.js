@@ -69,6 +69,7 @@ module.exports = {
         "grey-4": "#1F1E1E",
         "grey-5": "#6B6B6B",
         "grey-6": "#828282",
+        "grey-7": "#F2F2F2",
       },
 
       margin: {

@@ -3,6 +3,7 @@ import { gql, GraphQLClient } from "graphql-request";
 import { IProjectPage } from "../../interfaces/project_interfaces";
 import { IProjectSlug } from "../../interfaces/project_interfaces";
 import Image from "next/image";
+import { NOTFOUND } from "dns";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -55,7 +56,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   `;
 
-  const response: IProjectPage = await client.request(query, { slug });
+  const response: { projectPage: IProjectPage | null } = await client.request(
+    query,
+    { slug }
+  );
+
+  if (!response.projectPage) {
+    return { notFound: true };
+  }
 
   return { props: response };
 };
@@ -79,7 +87,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: "blocking",
+    fallback: false,
   };
 };
 

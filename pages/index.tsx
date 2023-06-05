@@ -30,8 +30,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const response: IProjectItem = await client.request(query);
 
-  console.log(response);
-
   return {
     props: response,
   };
@@ -46,13 +44,15 @@ export default function Home(response: IProjectItem) {
     .filter(checkFeatured)
     .map((project) => (
       <div key={project.id}>
-        <div>
-          <Image
-            src={project.thumbnail.url}
-            alt={project.imageAlt}
-            width={1200}
-            height={675}
-          />
+        <div className="w-full">
+          <div className="h-0 pt-[56.25%] relative">
+            <Image
+              src={project.thumbnail.url}
+              alt={project.imageAlt}
+              fill={true}
+              style={{ objectFit: "cover" }}
+            />
+          </div>
         </div>
         <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
           <span className="mr-1 text-grey m5 leading-27 pb-2 font-main">

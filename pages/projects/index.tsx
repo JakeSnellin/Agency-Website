@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
 import { IProjectItem } from "..//../interfaces/project_interfaces";
 import Image from "next/image";
+import Link from "next/link";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -27,15 +28,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const response: IProjectItem = await client.request(query);
 
-  console.log(response);
-
   let projectCount: number = 0;
 
   response.project.projectList.forEach(() => {
     projectCount++;
   });
-
-  console.log(projectCount);
 
   return {
     props: { ...response, projectCount },
@@ -45,13 +42,15 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Projects(response: IProjectItem) {
   const projects = response.project.projectList.map((project) => (
     <div key={project.id}>
-      <div>
-        <Image
-          src={project.thumbnail.url}
-          alt={project.imageAlt}
-          width={1200}
-          height={675}
-        />
+      <div className="w-full">
+        <div className="h-0 pt-[56.25%] relative">
+          <Image
+            src={project.thumbnail.url}
+            alt={project.imageAlt}
+            fill={true}
+            style={{ objectFit: "cover" }}
+          />
+        </div>
       </div>
       <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
         <span className="mr-1 text-grey m5 leading-27 pb-2 font-main">

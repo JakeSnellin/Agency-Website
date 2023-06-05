@@ -35,9 +35,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   `;
 
-  const thoughtData: IThoughtPage = await client.request(queryThoughtPage, {
-    slug,
-  });
+  const data: { thoughtPage: IThoughtPage | null } = await client.request(
+    queryThoughtPage,
+    {
+      slug,
+    }
+  );
+
+  if (!data.thoughtPage) {
+    return { notFound: true };
+  }
 
   const richTextData: IRichText = await client.request(queryRichText, { slug });
 
@@ -49,7 +56,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   } = richTextData;
 
-  return { props: { ...thoughtData, children } };
+  return { props: { ...data, children } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -71,7 +78,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: "blocking",
+    fallback: false,
   };
 };
 
