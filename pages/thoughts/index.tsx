@@ -3,6 +3,8 @@ import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
 import { IThought } from "../../interfaces/thought_interfaces";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -42,24 +44,30 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Thoughts(response: IThought) {
-  const projects = response.thought.thoughtList.map((thought) => (
+  const thoughts = response.thought.thoughtList.map((thought) => (
     <div key={thought.id}>
-      <div>
-        <Image
-          src={thought.postThumbnail.url}
-          alt={thought.imageAlt}
-          width={1200}
-          height={675}
-        />
-      </div>
-      <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
-        <h5 className="text-cream m5 inline-block leading-27 pb-2 font-main">
-          {thought.postHeading}
-        </h5>
-        <p className="text-grey text-m-caption font-m-caption leading-21 font-main">
-          {thought.postDate}
-        </p>
-      </div>
+      <Link href={"/thoughts/[slug]"} as={`/thoughts/${thought.slug}`}>
+        <div>
+          <div className="w-full">
+            <div className="h-0 pt-[56.25%] relative">
+              <Image
+                src={thought.postThumbnail.url}
+                alt={thought.imageAlt}
+                fill={true}
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          </div>
+          <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
+            <h5 className="text-cream m5 inline-block leading-27 pb-2 font-main">
+              {thought.postHeading}
+            </h5>
+            <p className="text-grey text-m-caption font-m-caption leading-21 font-main">
+              {thought.postDate}
+            </p>
+          </div>
+        </div>
+      </Link>
     </div>
   ));
 
@@ -77,7 +85,7 @@ export default function Thoughts(response: IThought) {
           </h5>
         </div>
       </div>
-      <div>{projects}</div>
+      <div>{thoughts}</div>
     </div>
   );
 }

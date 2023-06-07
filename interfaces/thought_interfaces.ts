@@ -1,5 +1,3 @@
-import { RichTextContent } from "@graphcms/rich-text-types";
-
 export interface IRichText {
   thoughtPage: {
     post: {

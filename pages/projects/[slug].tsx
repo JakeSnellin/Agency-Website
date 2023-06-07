@@ -3,7 +3,6 @@ import { gql, GraphQLClient } from "graphql-request";
 import { IProjectPage } from "../../interfaces/project_interfaces";
 import { IProjectSlug } from "../../interfaces/project_interfaces";
 import Image from "next/image";
-import { NOTFOUND } from "dns";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
