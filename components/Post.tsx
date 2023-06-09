@@ -1,14 +1,13 @@
 import React from "react";
 import { IThoughtPage } from "../interfaces/thought_interfaces";
 import Image from "next/image";
+import Footer from "./Footer";
 
 interface IPostProps {
   data: IThoughtPage;
 }
 
 export default function Post({ data }: IPostProps) {
-  console.log(data);
-
   function filterImages(child: any) {
     return child.type === "image";
   }
@@ -66,7 +65,7 @@ export default function Post({ data }: IPostProps) {
 
   return (
     <>
-      <div className="bg-cream pb-[68px]">
+      <div className="bg-cream pb-[68px] pt-[116px]">
         <div className="ml-16 mr-16 font-main">
           <h1 className="text-m1 text-black font-light leading-9 mb-15">
             {data.thoughtPage.postHeading}

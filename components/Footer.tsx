@@ -2,8 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
+  const isBrowser = () => typeof window !== "undefined";
+
+  function scrollToTop() {
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
-    <footer className="footer bg-grey-2 h-579">
+    <footer className="footer bg-grey-2 h-579 z-50">
       <div className="footer__inner">
         <div className="ml-8 mr-8">
           <div className="logo h-56 w-56 relative inline-block mb-34 mt-60">
@@ -88,8 +95,8 @@ export default function Footer() {
                   </a>
                 </div>
               </div>
-              <Link
-                href="#"
+              <button
+                onClick={scrollToTop}
                 className="return-container flex items-center gap-2"
               >
                 <div>
@@ -115,7 +122,7 @@ export default function Footer() {
                     </svg>
                   </div>
                 </div>
-              </Link>
+              </button>
             </div>
             <div className="relative w-full h-25 bg-gradient-to-r from-grad-blue">
               <div className="w-full h-24 bg-grey-2 absolute top-0 left-0"></div>

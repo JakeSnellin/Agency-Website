@@ -1,10 +1,5 @@
 @import url("https://fonts.cdnfonts.com/css/lab-grotesque");
 
-@font-face {
-  font-family: "LabGrotesque-Light";
-  src: url("../public/LabGrotesque-Light.ttf");
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

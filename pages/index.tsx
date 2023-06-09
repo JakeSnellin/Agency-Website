@@ -1,12 +1,9 @@
-import { Inter } from "next/font/google";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
 import Image from "next/image";
 import { IProjectItem } from "../interfaces/project_interfaces";
 import Hero from "../components/Hero";
 import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -44,8 +41,8 @@ export default function Home(response: IProjectItem) {
   const projects = response.project.projectList
     .filter(checkFeatured)
     .map((project) => (
-      <Link href={`projects/${project.slug}`}>
-        <div key={project.id}>
+      <Link key={project.id} href={`projects/${project.slug}`}>
+        <div>
           <div className="w-full">
             <div className="h-0 pt-[56.25%] relative">
               <Image
@@ -73,7 +70,7 @@ export default function Home(response: IProjectItem) {
 
   return (
     <>
-      <Hero></Hero>
+      <Hero />
       <div>{projects}</div>
     </>
   );

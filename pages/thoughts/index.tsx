@@ -4,7 +4,8 @@ import { gql, GraphQLClient } from "graphql-request";
 import { IThought } from "../../interfaces/thought_interfaces";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -89,3 +90,8 @@ export default function Thoughts(response: IThought) {
     </div>
   );
 }
+
+/*  <div className="fixed top-0">
+        <p className="text-white">Current Scroll Position:</p>
+        <p className="text-white">{scrollPos}px</p>
+      </div>*/

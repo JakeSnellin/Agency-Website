@@ -1,11 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
+import Icons from "./Icons";
+import { Children } from "react";
 
-export default function Topbar() {
+interface ITopBarProps {
+  children: React.ReactNode;
+}
+
+export default function Topbar({ children }: ITopBarProps) {
   return (
-    <header className="topBar h-16 flex items-center justify-between">
-      <Link href="./">
-        <div className="logo h-34 w-34 relative inline-block ml-4">
+    <header className="h-16 flex items-center justify-between md:h-[110px]">
+      <Link href="/">
+        <div className="logo h-34 w-34 relative inline-block ml-4 md:h-[54px] md:w-[54px] md:ml-35">
           <Image
             className="object-contain"
             src="/../public/logo3x.png"
@@ -15,48 +21,10 @@ export default function Topbar() {
           />
         </div>
       </Link>
-      <div className="social-media flex gap-5 mr-4">
-        <div className="w-8 h-8 relative flex items-center justify-center">
-          <Image
-            className="object-contain"
-            src="/../public/ellipse.png"
-            alt="ellipse"
-            fill={true}
-            quality={100}
-          />
-          <a
-            href="#"
-            className="social-media__icon w-3 h-3 absolute inline-block"
-            id="instagram"
-          >
-            <Image
-              className="object-contain"
-              src="/../public/insta_icon3x.png"
-              alt="instagram icon"
-              fill={true}
-              quality={100}
-            />
-          </a>
-        </div>
-        <div className="w-8 h-8 relative flex items-center justify-center">
-          <Image
-            src="/../public/ellipse.png"
-            alt="ellipse"
-            fill={true}
-            quality={100}
-          />
-          <a
-            href="#"
-            className="social-media__icon w-3 h-3 relative inline-block"
-            id="linkedIn"
-          >
-            <Image
-              src="/../public/indesign_icon3x.png"
-              alt="linkedIn icon"
-              fill={true}
-              quality={100}
-            />
-          </a>
+      <div className="flex items-center">
+        <div className="hidden md:block">{children}</div>
+        <div className="social-media flex gap-5 mr-4">
+          <Icons />
         </div>
       </div>
     </header>

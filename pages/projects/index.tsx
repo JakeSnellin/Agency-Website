@@ -41,8 +41,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Projects(response: IProjectItem) {
   const projects = response.project.projectList.map((project) => (
-    <Link href={`projects/${project.slug}`}>
-      <div key={project.id}>
+    <Link
+      key={project.id}
+      href={"/projects/[slug]"}
+      as={`/projects/${project.slug}`}
+    >
+      <div>
         <div className="w-full">
           <div className="h-0 pt-[56.25%] relative">
             <Image

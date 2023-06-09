@@ -4,9 +4,8 @@ import { IThoughtSlug } from "../../interfaces/thought_interfaces";
 import { IThoughtPage } from "../../interfaces/thought_interfaces";
 import { IRichText } from "../../interfaces/thought_interfaces";
 import Post from "../../components/Post";
-import Modal from "../../components/Modal";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import Modal from "../../components/Modal";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -86,13 +85,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default function Thought(data: IThoughtPage) {
   const router = useRouter();
 
-  useEffect(() => {
-    router.prefetch("/thoughts");
-  });
-
   return (
     <>
-      <Modal isOpen={true} onClose={() => router.push("/thoughts")}>
+      <Modal onClose={() => router.push("/thoughts")}>
         <Post data={data} />
       </Modal>
     </>
