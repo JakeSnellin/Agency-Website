@@ -10,34 +10,30 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   const router = useRouter();
 
-  const conditionallyCheckForLayout = () => {
-    switch (router.pathname) {
-      case "/thoughts/[slug]":
-        return (
-          <div>
-            {children} <Footer />
+  return (
+    <>
+      {router.pathname === "/thoughts/[slug]" ? (
+        <div>
+          {children}
+          <Footer />
+        </div>
+      ) : router.pathname === "/projects/[slug]" ? (
+        <div>
+          {children}
+          <Footer />
+        </div>
+      ) : (
+        <div className="content">
+          <Topbar>
+            <Navmenu />
+          </Topbar>
+          <div className="block md:hidden">
+            <Navmenu />
           </div>
-        );
-      case "/projects/[slug]":
-        return (
-          <div>
-            {children} <Footer />
-          </div>
-        );
-      default:
-        return (
-          <div className="content">
-            <Topbar>
-              <Navmenu />
-            </Topbar>
-            <div className="block md:hidden">
-              <Navmenu />
-            </div>
-            {children}
-            <Footer />
-          </div>
-        );
-    }
-  };
-  return <div>{conditionallyCheckForLayout()}</div>;
+          {children}
+          <Footer />
+        </div>
+      )}
+    </>
+  );
 }

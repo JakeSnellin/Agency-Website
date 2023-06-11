@@ -1,6 +1,8 @@
 import React from "react";
 import { IProjectPage } from "../interfaces/project_interfaces";
 import Image from "next/image";
+import ProjectImageBannerMobile from "./Projectimagebannermobile";
+import ProjectImageBannerDesktop from "./Projectimagebannerdesktop";
 
 interface IProjectProps {
   data: IProjectPage;
@@ -13,13 +15,11 @@ function createMarkup(c: string) {
 export default function Project({ data }: IProjectProps) {
   return (
     <>
-      <div className="h-0 w-full pt-[75%] relative">
-        <Image
-          src={data.projectPage.heroImage.url}
-          alt={data.projectPage.heroImageAlt}
-          fill={true}
-          style={{ objectFit: "cover" }}
-        />
+      <div className="block md:hidden">
+        <ProjectImageBannerMobile data={data} />
+      </div>
+      <div className="hidden md:block">
+        <ProjectImageBannerDesktop data={data} />
       </div>
       <div className="bg-grey-4 relative">
         <div className="absolute bottom-0 left-0 bg-grey-3 h-px w-full"></div>

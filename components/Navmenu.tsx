@@ -32,7 +32,7 @@ export default function Navmenu() {
             </h5>
           </Link>
         </li>
-        <li className="nav-menu__item mr-6">
+        <li className="nav-menu__item mr-6 md:mr-0">
           <Link href="/contact">
             <h5 className="text-m5 text-blue font-light font-main leading-21.6">
               Contact

@@ -17,3 +17,7 @@
 .m5 {
   @apply font-400 text-m5 font-main;
 }
+
+.counterText {
+  @apply text-m-body text-orange font-main leading-24 font-250;
+}

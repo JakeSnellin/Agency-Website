@@ -41,7 +41,11 @@ export default function Home(response: IProjectItem) {
   const projects = response.project.projectList
     .filter(checkFeatured)
     .map((project) => (
-      <Link key={project.id} href={`projects/${project.slug}`}>
+      <Link
+        key={project.id}
+        className="block md:w-[50%]"
+        href={`projects/${project.slug}`}
+      >
         <div>
           <div className="w-full">
             <div className="h-0 pt-[56.25%] relative">
@@ -71,7 +75,7 @@ export default function Home(response: IProjectItem) {
   return (
     <>
       <Hero />
-      <div>{projects}</div>
+      <div className="md:flex md:flex-wrap">{projects}</div>
     </>
   );
 }

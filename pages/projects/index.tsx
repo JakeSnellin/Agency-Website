@@ -43,6 +43,7 @@ export default function Projects(response: IProjectItem) {
   const projects = response.project.projectList.map((project) => (
     <Link
       key={project.id}
+      className="block md:w-[50%]"
       href={"/projects/[slug]"}
       as={`/projects/${project.slug}`}
     >
@@ -74,19 +75,19 @@ export default function Projects(response: IProjectItem) {
 
   return (
     <div>
-      <div className="flex items-center justify-between mt-77 mb-26">
-        <div>
-          <h3 className="text-m3 text-blue font-main leading-27.6 ml-17 font-250">
+      <div className="flex mr-4 ml-17 items-center justify-between mt-77 mb-26 md:ml-[12.22222222222222%] md:mr-[4.375%] md:mb-0 md:mt-0 md:h-[144px]">
+        <div className="md:self-start md:mt-[22px]">
+          <h3 className="text-m3 text-blue font-main leading-27.6 font-250">
             All projects
           </h3>
         </div>
-        <div>
-          <h5 className="text-m-body text-orange font-main leading-24 mr-4 font-250">
+        <div className="md:self-end md:mb-[42px]">
+          <h5 className="counterText">
             {response.projectCount.toString() + " Projects"}
           </h5>
         </div>
       </div>
-      <div>{projects}</div>
+      <div className="md:flex md:flex-wrap">{projects}</div>
     </div>
   );
 }

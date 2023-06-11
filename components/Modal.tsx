@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 
-import ReactPortal from "./ReactPortal";
-
 import Image from "next/image";
 
 interface ModalProps {

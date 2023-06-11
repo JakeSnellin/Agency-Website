@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import Icons from "./Icons";
-import { Children } from "react";
 
 interface ITopBarProps {
   children: React.ReactNode;
@@ -9,9 +8,9 @@ interface ITopBarProps {
 
 export default function Topbar({ children }: ITopBarProps) {
   return (
-    <header className="h-16 flex items-center justify-between md:h-[110px]">
+    <header className="pt-[15px] pb-[15px] flex items-center justify-between md:pt-[43px] md:pb-[43px]">
       <Link href="/">
-        <div className="logo h-34 w-34 relative inline-block ml-4 md:h-[54px] md:w-[54px] md:ml-35">
+        <div className="logo h-34 w-34 relative block ml-4 md:h-[54px] md:w-[54px] md:ml-35">
           <Image
             className="object-contain"
             src="/../public/logo3x.png"
@@ -21,9 +20,9 @@ export default function Topbar({ children }: ITopBarProps) {
           />
         </div>
       </Link>
-      <div className="flex items-center">
+      <div className="flex items-center gap-[21px]">
         <div className="hidden md:block">{children}</div>
-        <div className="social-media flex gap-5 mr-4">
+        <div className="social-media flex gap-5 mr-4 md:mr-35">
           <Icons />
         </div>
       </div>
