@@ -3,6 +3,8 @@ import { IProjectPage } from "../interfaces/project_interfaces";
 import Image from "next/image";
 import ProjectImageBannerMobile from "./Projectimagebannermobile";
 import ProjectImageBannerDesktop from "./Projectimagebannerdesktop";
+import ProjectNavMobile from "./Projectnavmobile";
+import ProjectNavDesktop from "./Projectnavdesktop";
 
 interface IProjectProps {
   data: IProjectPage;
@@ -17,24 +19,11 @@ export default function Project({ data }: IProjectProps) {
     <>
       <div className="block md:hidden">
         <ProjectImageBannerMobile data={data} />
+        <ProjectNavMobile />
       </div>
       <div className="hidden md:block">
         <ProjectImageBannerDesktop data={data} />
-      </div>
-      <div className="bg-grey-4 relative">
-        <div className="absolute bottom-0 left-0 bg-grey-3 h-px w-full"></div>
-        <ul className="flex font-main text-blue pt-12 pl-23 gap-35">
-          <li className="h-10 relative">
-            <h5 className="font-250 leading-27 text-m5">Overview</h5>
-            <div className="absolute h-px bg-white w-full bottom-0 left-0"></div>
-          </li>
-          <li className="h-10">
-            <h5 className="font-250 leading-27 text-m5">Outcome</h5>
-          </li>
-          <li className="h-10">
-            <h5 className="font-250 leading-27 text-m5">Process</h5>
-          </li>
-        </ul>
+        <ProjectNavDesktop />
       </div>
       <div className="mr-4 ml-4 mb-56">
         <h1 className="text-blue leading-35.52 font-250 text-m1 mb-4 mt-12">
