@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef, useLayoutEffect } from "react";
 import { memo } from "react";
 
 const ROUTES_TO_RETAIN = ["/thoughts", "/projects", "/"];
@@ -50,7 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router.asPath]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isRoute) {
       window.scrollTo(0, ref.current[objKey]["scrollPos"]);
     }

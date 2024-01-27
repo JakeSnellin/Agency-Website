@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: LabGrotesque-Thin;
+  src: url(../public/LabGrotesque-Thin.ttf);
+}
+
 @layer base {
   body {
     @apply bg-black;

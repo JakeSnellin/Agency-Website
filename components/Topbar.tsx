@@ -8,7 +8,7 @@ interface ITopBarProps {
 
 export default function Topbar({ children }: ITopBarProps) {
   return (
-    <header className="pt-[15px] pb-[15px] flex items-center justify-between md:pt-[43px] md:pb-[43px]">
+    <header className="pt-[15px] pb-[15px] flex items-center justify-between md:pt-0 md:pb-0">
       <Link href="/">
         <div className="logo h-34 w-34 relative block ml-4 md:h-[54px] md:w-[54px] md:ml-35">
           <Image
@@ -20,7 +20,7 @@ export default function Topbar({ children }: ITopBarProps) {
           />
         </div>
       </Link>
-      <div className="flex items-center gap-[21px]">
+      <div className="flex items-center gap-[29px]">
         <div className="hidden md:block">{children}</div>
         <div className="social-media flex gap-5 mr-4 md:mr-35">
           <Icons />

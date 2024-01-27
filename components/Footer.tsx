@@ -6,7 +6,7 @@ import Copyright from "./Copyright";
 
 export default function Footer() {
   return (
-    <footer className="footer bg-grey-2 pb-[71px] pl-8 pr-8 md:pl-[64px] md:pr-[64px] md:pb-[98px]">
+    <footer className="footer bg-grey-2 pb-[71px] pl-8 pr-8 md:pl-[64px] md:pr-[64px] md:pb-[98px] clear-both">
       <div className="footer__inner">
         <div>
           <div className="logo h-56 w-56 relative inline-block mb-34 mt-60 md:mt-[76px]">

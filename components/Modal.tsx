@@ -11,7 +11,7 @@ export default function Modal({ children, onClose }: ModalProps) {
   return (
     <div>
       <button
-        className="absolute top-[23px] right-[16px] z-50 md:top-11 md:right-16"
+        className="fixed top-[23px] right-[16px] z-50 md:top-11 md:right-16"
         onClick={onClose}
       >
         <div className="relative h-[53px] w-[53px] md:h-[80px] md:w-[80px]">

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProjectNavDesktop() {
   return (
-    <div className="project-nav bg-grey-4 pt-[44px] pb-[44px] pl-[63px] w-[216px] flex mt-[100px]">
+    <div className="project-nav bg-grey-4 pt-[44px] pb-[44px] pl-[63px] w-[216px] mt-[100px] h-[228px] md:shrink-0 md:mt-0">
       <div className="project-nav__inner flex content-center">
         <div className="h-[137px] w-px bg-grey-3 mr-[25px] self-center"></div>
         <div>

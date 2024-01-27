@@ -6,6 +6,7 @@ import { IRichText } from "../../interfaces/thought_interfaces";
 import Post from "../../components/Post";
 import { useRouter } from "next/router";
 import Modal from "../../components/Modal";
+import PostDesktop from "@/components/Postdesktop";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -86,9 +87,15 @@ export default function Thought(data: IThoughtPage) {
   const router = useRouter();
 
   return (
+    //check here whether to render mobile post or desktop post
     <>
       <Modal onClose={() => router.push("/thoughts")}>
-        <Post data={data} />
+        <div className="hidden md:block">
+          <PostDesktop data={data}></PostDesktop>
+        </div>
+        <div className="md:hidden">
+          <Post data={data} />
+        </div>
       </Modal>
     </>
   );

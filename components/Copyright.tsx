@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Copyright() {
   return (
     <div className="leading-24 md:flex md:justify-between">
-      <p className="text-m-caption text-grey-6 font-main mt-5">
+      <p className="text-m-caption text-grey-6 font-main mt-5 md:mt-[23px]">
         © 2022 Lowein-Levy Ltd. All rights reserved.
       </p>
       <ul className="legal flex mt-5">

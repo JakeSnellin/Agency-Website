@@ -93,6 +93,7 @@ module.exports = {
         32: "32px",
         33: "33px",
         28: "28px",
+        64: "64px",
       },
 
       fontWeight: {
@@ -121,7 +122,7 @@ module.exports = {
       },
 
       fontFamily: {
-        main: ["Lab Grotesque"],
+        main: ["LabGrotesque-Thin"],
       },
 
       gap: {
