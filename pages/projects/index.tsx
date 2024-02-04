@@ -8,7 +8,7 @@ import Link from "next/link";
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
 export const getStaticProps: GetStaticProps = async () => {
-  const query = gql`
+  const projectQuery = gql`
     query Project {
       project(where: { id: "clhyv0zrjln9j0cmikv5txplr" }) {
         projectList {
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   `;
 
-  const response: IProjectItem = await client.request(query);
+  const response: IProjectItem = await client.request(projectQuery);
 
   let projectCount: number = 0;
 

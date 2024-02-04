@@ -123,6 +123,7 @@ module.exports = {
 
       fontFamily: {
         main: ["LabGrotesque-Thin"],
+        hero: ["Fahkwang-Light"],
       },
 
       gap: {

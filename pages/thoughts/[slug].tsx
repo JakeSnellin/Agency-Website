@@ -13,7 +13,7 @@ const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context.params?.slug as string;
 
-  const queryThoughtPage = gql`
+  const thoughtPageQuery = gql`
     query ThoughtPage($slug: String!) {
       thoughtPage(where: { slug: $slug }) {
         id
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   `;
 
-  const queryRichText = gql`
+  const richTextQuery = gql`
     query RichText($slug: String!) {
       thoughtPage(where: { slug: $slug }) {
         post {
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   `;
 
   const data: { thoughtPage: IThoughtPage | null } = await client.request(
-    queryThoughtPage,
+    thoughtPageQuery,
     {
       slug,
     }
@@ -47,17 +47,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { notFound: true };
   }
 
-  const richTextData: IRichText = await client.request(queryRichText, { slug });
+  const richTextData: IRichText = await client.request(richTextQuery, { slug });
 
-  const {
-    thoughtPage: {
-      post: {
-        raw: { children },
+  if (
+    typeof richTextData.thoughtPage.post !== undefined &&
+    richTextData.thoughtPage.post !== null
+  ) {
+    const {
+      thoughtPage: {
+        post: {
+          raw: { children },
+        },
       },
-    },
-  } = richTextData;
-
-  return { props: { ...data, children } };
+    } = richTextData;
+    return { props: { ...data, children } };
+  } else return { props: { ...data } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -90,10 +94,10 @@ export default function Thought(data: IThoughtPage) {
     //check here whether to render mobile post or desktop post
     <>
       <Modal onClose={() => router.push("/thoughts")}>
-        <div className="hidden md:block">
+        {/*<div className="hidden md:block">
           <PostDesktop data={data}></PostDesktop>
-        </div>
-        <div className="md:hidden">
+  </div>*/}
+        <div>
           <Post data={data} />
         </div>
       </Modal>

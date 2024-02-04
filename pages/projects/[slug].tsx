@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     console.log("Slug is undefined. Check the slug passed into getStaticProps");
   }
 
-  const query = gql`
+  const projectPageQuery = gql`
     query ProjectPage($slug: String!) {
       projectPage(where: { slug: $slug }) {
         id
@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   `;
 
   const response: { projectPage: IProjectPage | null } = await client.request(
-    query,
+    projectPageQuery,
     { slug }
   );
 
