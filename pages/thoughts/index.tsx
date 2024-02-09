@@ -8,7 +8,7 @@ import Link from "next/link";
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
 export const getStaticProps: GetStaticProps = async () => {
-  const query = gql`
+  const thoughtQuery = gql`
     query Thought {
       thought(where: { id: "cli2y5dww4x4c0cmm99b20wjc" }) {
         thoughtList {
@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   `;
 
-  const response: IThought = await client.request(query);
+  const response: IThought = await client.request(thoughtQuery);
 
   console.log(response);
 
@@ -54,8 +54,8 @@ export default function Thoughts(response: IThought) {
         <div className="w-full">
           <div className="h-0 pt-[56.25%] relative">
             <Image
-              src={thought.postThumbnail.url}
-              alt={thought.imageAlt}
+              src={thought?.postThumbnail?.url ? thought.postThumbnail.url : ""}
+              alt={thought?.imageAlt ? thought.imageAlt : ""}
               fill={true}
               style={{ objectFit: "cover" }}
             />
@@ -63,10 +63,10 @@ export default function Thoughts(response: IThought) {
         </div>
         <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
           <h5 className="text-cream m5 inline-block leading-27 pb-2 font-main">
-            {thought.postHeading}
+            {thought.postHeading && thought.postHeading}
           </h5>
           <p className="text-grey text-m-caption font-m-caption leading-21 font-main">
-            {thought.postDate}
+            {thought.postDate && thought.postDate}
           </p>
         </div>
       </div>

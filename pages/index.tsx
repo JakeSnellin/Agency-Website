@@ -2,13 +2,14 @@ import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
 import Image from "next/image";
 import { IProjectItem } from "../interfaces/project_interfaces";
+import { IHero } from "../interfaces/hero_interface";
 import Hero from "../components/Hero";
 import Link from "next/link";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
 export const getStaticProps: GetStaticProps = async () => {
-  const query = gql`
+  const projectQuery = gql`
     query Project {
       project(where: { id: "clhyv0zrjln9j0cmikv5txplr" }) {
         projectList {
@@ -26,10 +27,10 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   `;
 
-  const response: IProjectItem = await client.request(query);
+  const response: IProjectItem = await client.request(projectQuery);
 
   return {
-    props: response,
+    props: { ...response },
   };
 };
 
@@ -37,7 +38,7 @@ const checkFeatured = (project: any) => {
   return project.isFeatured === true;
 };
 
-export default function Home(response: IProjectItem) {
+export default function Home(response: IProjectItem, heroResponse: IHero) {
   const projects = response.project.projectList
     .filter(checkFeatured)
     .map((project) => (
