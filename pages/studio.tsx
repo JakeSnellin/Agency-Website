@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import studioImg from "../public/static/studio_img.png";
 
 export default function Studio() {
   return (
@@ -21,7 +22,7 @@ export default function Studio() {
                 <div className="w-full h-0 pt-[104.1237113402062%] relative">
                   <div>
                     <Image
-                      src="/../public/studio_img.png"
+                      src={studioImg}
                       alt="picture of designer"
                       fill={true}
                       style={{ objectFit: "cover" }}
@@ -32,7 +33,7 @@ export default function Studio() {
               <div className="w-[46.41148325358852%]">
                 <div className="w-full h-0 pt-[104.1237113402062%] relative">
                   <Image
-                    src="/../public/studio_img.png"
+                    src={studioImg}
                     alt="picture of designer"
                     fill={true}
                     style={{ objectFit: "cover" }}

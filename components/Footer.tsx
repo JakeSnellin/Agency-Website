@@ -3,6 +3,7 @@ import Image from "next/image";
 import Icons from "./Icons";
 import BackToTopButton from "./Backtotopbutton";
 import Copyright from "./Copyright";
+import logo3x from "../public/static/logo3x.png";
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
           <div className="logo h-56 w-56 relative inline-block mb-34 mt-60 md:mt-[76px]">
             <Image
               className="object-contain"
-              src="/../public/logo3x.png"
+              src={logo3x}
               alt="logo"
               fill={true}
               quality={100}

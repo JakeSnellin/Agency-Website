@@ -6,12 +6,12 @@
 
 @font-face {
   font-family: LabGrotesque-Thin;
-  src: url(../public/LabGrotesque-Thin.ttf);
+  src: url(../public/static/LabGrotesque-Thin.ttf);
 }
 
 @font-face {
   font-family: Fahkwang-Light;
-  src: url(../public/Fahkwang-Light.ttf);
+  src: url(../public/static/Fahkwang-Light.ttf);
 }
 
 @layer base {

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import background from "../public/static/paintbg.png";
 
 export default function Services() {
   return (
@@ -21,7 +22,7 @@ export default function Services() {
         <div className="w-[61.25%] absolute top-[460px] left-0 z-[-1] md:w-[65.55555555555556%] md:top-[736px]">
           <div className="relative h-0 w-full pt-[95.76271186440678%]">
             <Image
-              src="/../public/paintbg.png"
+              src={background}
               alt="abstract paint background"
               fill={true}
               style={{ objectFit: "cover" }}

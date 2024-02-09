@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Icons from "./Icons";
+import logo3x from "../public/static/logo3x.png";
 
 interface ITopBarProps {
   children: React.ReactNode;
@@ -13,7 +14,7 @@ export default function Topbar({ children }: ITopBarProps) {
         <div className="logo h-34 w-34 relative block ml-4 md:h-[54px] md:w-[54px] md:ml-35">
           <Image
             className="object-contain"
-            src="/../public/logo3x.png"
+            src={logo3x}
             alt="logo"
             fill={true}
             quality={100}

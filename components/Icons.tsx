@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import insta from "../public/static/insta_icon3x.png";
+import ellipse from "../public/static/ellipse.png";
+import linkedIn3x from "../public/static/Linkedin_icon3x.png";
 
 interface IIcons {
   children: React.ReactNode;
@@ -12,7 +15,7 @@ export default function Icons() {
       <div className="w-8 h-8 relative flex items-center justify-center">
         <Image
           className={"object-contain"}
-          src={"/../public/ellipse.png"}
+          src={ellipse}
           alt={"ellipse"}
           fill={true}
           quality={100}
@@ -23,7 +26,7 @@ export default function Icons() {
         >
           <Image
             className={"object-contain"}
-            src={"/../public/insta_icon3x.png"}
+            src={insta}
             alt={"instagram icon"}
             fill={true}
             quality={100}
@@ -34,7 +37,7 @@ export default function Icons() {
       <div className="w-8 h-8 relative flex items-center justify-center">
         <Image
           className={"object-contain"}
-          src={"/../public/ellipse.png"}
+          src={ellipse}
           alt={"ellipse"}
           fill={true}
           quality={100}
@@ -45,7 +48,7 @@ export default function Icons() {
         >
           <Image
             className={"object-contain"}
-            src={"/../public/indesign_icon3x.png"}
+            src={linkedIn3x}
             alt={"linkedIn icon"}
             fill={true}
             quality={100}
