@@ -24,6 +24,10 @@ module.exports = {
         caption: "0.875rem",
       },
 
+      screens: {
+        desktop: "1440px",
+      },
+
       lineHeight: {
         21.6: "21.6px",
         31.5: "31.5px",
@@ -55,6 +59,8 @@ module.exports = {
         56: "3.375rem",
         21: "1.313rem",
         1440: "90rem",
+        52.9: "52.9%",
+        81.4: "81.4%",
       },
 
       colors: {
@@ -94,6 +100,8 @@ module.exports = {
         33: "33px",
         28: "28px",
         64: "64px",
+        93: "93px",
+        157: "157px",
       },
 
       fontWeight: {
@@ -104,6 +112,13 @@ module.exports = {
 
       minWidth: {
         hero: "15.938rem",
+      },
+
+      maxWidth: {
+        80.875: "80.875rem",
+        37.9: "37.9%",
+        50.6: "50.6%",
+        70.9: "70.9%",
       },
 
       padding: {
@@ -119,6 +134,8 @@ module.exports = {
         81: "81px",
         97: "97px",
         12: "12px",
+        133.7: "133.7%",
+        57.7: "57.7%",
       },
 
       fontFamily: {

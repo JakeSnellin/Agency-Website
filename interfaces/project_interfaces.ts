@@ -42,6 +42,29 @@ export interface IProjectSlug {
   };
 }
 
+export interface IHomePage {
+  homePage: {
+    title: string;
+    subtitle: string;
+    projectList: {
+      projects: {
+        id: string;
+        slug: string;
+        thumbnail: {
+          url: string;
+          width: number;
+          height: number;
+        };
+        title: string;
+        disciplines: string;
+        isFeatured: boolean;
+        isPortrait: boolean;
+        imageAlt: string;
+      }[];
+    }[];
+  };
+}
+
 export interface IProjectItem {
   project: {
     projectList: {

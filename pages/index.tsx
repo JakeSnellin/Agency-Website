@@ -5,29 +5,41 @@ import { IProjectItem } from "../interfaces/project_interfaces";
 import { IHero } from "../interfaces/hero_interface";
 import Hero from "../components/Hero";
 import Link from "next/link";
+import { IHomePage } from "../interfaces/project_interfaces";
+import ProjectBlock from "@/components/ProjectBlock";
+import clsx from "clsx";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projectQuery = gql`
-    query Project {
-      project(where: { id: "clhyv0zrjln9j0cmikv5txplr" }) {
+  const homePage = gql`
+    query HomePage {
+      homePage(where: { id: "clsemnt0znyem0amoivlwjr0v" }) {
+        title
+        subtitle
         projectList {
-          id
-          slug
-          thumbnail {
-            url
+          ... on ProjectBlock {
+            projects {
+              id
+              slug
+              thumbnail {
+                url
+                width
+                height
+              }
+              title
+              disciplines
+              isFeatured
+              isPortrait
+              imageAlt
+            }
           }
-          title
-          disciplines
-          isFeatured
-          imageAlt
         }
       }
     }
   `;
 
-  const response: IProjectItem = await client.request(projectQuery);
+  const response: IProjectItem = await client.request(homePage);
 
   return {
     props: { ...response },
@@ -38,27 +50,28 @@ const checkFeatured = (project: any) => {
   return project.isFeatured === true;
 };
 
-export default function Home(response: IProjectItem, heroResponse: IHero) {
-  const projects = response.project.projectList
-    .filter(checkFeatured)
-    .map((project) => (
-      <Link
-        key={project.id}
-        className="block md:w-[50%]"
-        href={`projects/${project.slug}`}
-      >
-        <div>
-          <div className="w-full">
-            <div className="h-0 pt-[56.25%] relative">
-              <Image
-                src={project.thumbnail.url}
-                alt={project.imageAlt}
-                fill={true}
-                style={{ objectFit: "cover" }}
-              />
-            </div>
+export default function Home(response: IHomePage) {
+  return (
+    <div className="projects-container mx-4 desktop:mx-0">
+      <div className="w-full desktop:max-w-80.875 flex flex-col mx-auto">
+        {response.homePage.projectList.map((projectBlock) => (
+          <div
+            className={clsx(
+              "flex flex-col desktop:flex-row",
+              projectBlock.projects.length < 2
+                ? "desktop:justify-center"
+                : "desktop:justify-between"
+            )}
+          >
+            <ProjectBlock projectBlock={projectBlock} />
           </div>
-          <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/*<div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b">
             <span className="mr-1 text-grey m5 leading-27 pb-2 font-main">
               Project
             </span>
@@ -68,15 +81,4 @@ export default function Home(response: IProjectItem, heroResponse: IHero) {
             <p className="text-grey text-m-caption font-m-caption leading-21 font-main">
               {project.disciplines}
             </p>
-          </div>
-        </div>
-      </Link>
-    ));
-
-  return (
-    <>
-      <Hero />
-      <div className="md:flex md:flex-wrap">{projects}</div>
-    </>
-  );
-}
+          </div>*/
