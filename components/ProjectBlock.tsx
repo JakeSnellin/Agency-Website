@@ -36,6 +36,7 @@ export default function ProjectBlock({ projectBlock }: any) {
                     ? "object-contain object-left"
                     : "object-cover"
                 )}
+                //sizes="(max-width: 1440px) 100vw, 70vw"
               />
             </div>
           </div>

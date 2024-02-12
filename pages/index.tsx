@@ -52,33 +52,27 @@ const checkFeatured = (project: any) => {
 
 export default function Home(response: IHomePage) {
   return (
-    <div className="projects-container mx-4 desktop:mx-0">
-      <div className="w-full desktop:max-w-80.875 flex flex-col mx-auto">
-        {response.homePage.projectList.map((projectBlock) => (
-          <div
-            className={clsx(
-              "flex flex-col desktop:flex-row",
-              projectBlock.projects.length < 2
-                ? "desktop:justify-center"
-                : "desktop:justify-between"
-            )}
-          >
-            <ProjectBlock projectBlock={projectBlock} />
-          </div>
-        ))}
+    <>
+      <Hero
+        title={response.homePage.title}
+        subtitle={response.homePage.subtitle}
+      />
+      <div className="projects-container mx-4 desktop:mx-0">
+        <div className="w-full desktop:max-w-80.875 flex flex-col mx-auto">
+          {response.homePage.projectList.map((projectBlock) => (
+            <div
+              className={clsx(
+                "flex flex-col desktop:flex-row",
+                projectBlock.projects.length < 2
+                  ? "desktop:justify-center"
+                  : "desktop:justify-between"
+              )}
+            >
+              <ProjectBlock projectBlock={projectBlock} />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
-
-/*<div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b">
-            <span className="mr-1 text-grey m5 leading-27 pb-2 font-main">
-              Project
-            </span>
-            <h5 className="text-cream m5 inline-block leading-27 pb-2 font-main">
-              {project.title}
-            </h5>
-            <p className="text-grey text-m-caption font-m-caption leading-21 font-main">
-              {project.disciplines}
-            </p>
-          </div>*/
