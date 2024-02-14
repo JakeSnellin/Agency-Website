@@ -72,10 +72,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const query = gql`
-    query Project {
-      project(where: { id: "clhyv0zrjln9j0cmikv5txplr" }) {
+    query ProjectGrid {
+      projectGrid(where: { id: "clsemnt0znyem0amoivlwjr0v" }) {
         projectList {
-          slug
+          ... on ProjectBlock {
+            projects {
+              slug
+            }
+          }
         }
       }
     }
@@ -83,9 +87,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const response: IProjectSlug = await client.request(query);
 
-  const paths = response.project.projectList.map((project) => ({
-    params: { slug: project.slug },
-  }));
+  const rawPaths = response.projectGrid.projectList.map((projectBlock) =>
+    projectBlock.projects.map((project) => ({ params: { slug: project.slug } }))
+  );
+
+  const paths = rawPaths.flat();
 
   return {
     paths: paths,

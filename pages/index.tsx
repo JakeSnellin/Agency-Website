@@ -1,24 +1,21 @@
+import Hero from "@/components/Hero";
+import ProjectContainer from "@/components/ProjectContainer";
+import React from "react";
 import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
-import Image from "next/image";
-import { IProjectItem } from "../interfaces/project_interfaces";
-import { IHero } from "../interfaces/hero_interface";
-import Hero from "../components/Hero";
-import Link from "next/link";
-import { IHomePage } from "../interfaces/project_interfaces";
-import ProjectBlock from "@/components/ProjectBlock";
-import clsx from "clsx";
+import { IProjectGrid } from "../interfaces/project_interfaces";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
 export const getStaticProps: GetStaticProps = async () => {
   const homePage = gql`
-    query HomePage {
-      homePage(where: { id: "clsemnt0znyem0amoivlwjr0v" }) {
+    query ProjectGrid {
+      projectGrid(where: { id: "clsemnt0znyem0amoivlwjr0v" }) {
         title
         subtitle
         projectList {
           ... on ProjectBlock {
+            isFeatured
             projects {
               id
               slug
@@ -29,7 +26,6 @@ export const getStaticProps: GetStaticProps = async () => {
               }
               title
               disciplines
-              isFeatured
               isPortrait
               imageAlt
             }
@@ -39,10 +35,18 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   `;
 
-  const response: IProjectItem = await client.request(homePage);
+  const response: IProjectGrid = await client.request(homePage);
+
+  const filteredResponse = {
+    projectGrid: {
+      title: response.projectGrid.title,
+      subtitle: response.projectGrid.subtitle,
+      projectList: response.projectGrid.projectList.filter(checkFeatured),
+    },
+  };
 
   return {
-    props: { ...response },
+    props: { ...filteredResponse },
   };
 };
 
@@ -50,29 +54,14 @@ const checkFeatured = (project: any) => {
   return project.isFeatured === true;
 };
 
-export default function Home(response: IHomePage) {
+export default function Home(response: IProjectGrid) {
   return (
     <>
       <Hero
-        title={response.homePage.title}
-        subtitle={response.homePage.subtitle}
+        title={response.projectGrid.title}
+        subtitle={response.projectGrid.subtitle}
       />
-      <div className="projects-container mx-4 desktop:mx-0">
-        <div className="w-full desktop:max-w-80.875 flex flex-col mx-auto">
-          {response.homePage.projectList.map((projectBlock) => (
-            <div
-              className={clsx(
-                "flex flex-col desktop:flex-row",
-                projectBlock.projects.length < 2
-                  ? "desktop:justify-center"
-                  : "desktop:justify-between"
-              )}
-            >
-              <ProjectBlock projectBlock={projectBlock} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <ProjectContainer {...response} />
     </>
   );
 }

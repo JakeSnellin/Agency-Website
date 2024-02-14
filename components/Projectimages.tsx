@@ -67,7 +67,7 @@ export default function ProjectImages({ data }: IProjectProps) {
           {data.projectPage.clientDescription}
         </p>
       </div>
-      <div className="md:flex gap-6">
+      <div className="md:flex md:justify-between">
         <div className="md:w-[48.85215794306703%]">
           <div className="h-0 pt-[133.3333333333333%] relative mb-4 md:pt-[130.8270676691729%]">
             <Image

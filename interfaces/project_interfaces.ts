@@ -35,15 +35,17 @@ export interface IProjectPage {
 }
 
 export interface IProjectSlug {
-  project: {
+  projectGrid: {
     projectList: {
-      slug: string;
+      projects: {
+        slug: string;
+      }[];
     }[];
   };
 }
 
-export interface IHomePage {
-  homePage: {
+export interface IProjectGrid {
+  projectGrid: {
     title: string;
     subtitle: string;
     projectList: {
@@ -63,21 +65,6 @@ export interface IHomePage {
       }[];
     }[];
   };
-}
-
-export interface IProjectItem {
-  project: {
-    projectList: {
-      id: string;
-      slug: string;
-      thumbnail: {
-        url: string;
-      };
-      title: string;
-      disciplines: string;
-      isFeatured: boolean;
-      imageAlt: string;
-    }[];
-  };
   projectCount: number;
+  featuredProjects: {};
 }
