@@ -6,6 +6,7 @@ import Image from "next/image";
 import Modal from "../../components/Modal";
 import { useRouter } from "next/router";
 import Project from "../../components/Project";
+import ProgressBar from "@/components/ProgressBar";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -104,7 +105,7 @@ export default function ProjectPage(data: IProjectPage) {
 
   return (
     <div className="font-main">
-      <div className="w-full h-1 bg-orange"></div>
+      <ProgressBar />
       <Modal onClose={() => router.push("/projects")}>
         <Project data={data} />
       </Modal>
