@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let projectCount: number = 0;
 
   response.projectGrid.projectList.forEach((projectBlock) => {
-    projectBlock.projects.forEach(() => {
+    projectBlock.projects?.forEach(() => {
       projectCount++;
     });
   });
