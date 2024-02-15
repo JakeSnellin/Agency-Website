@@ -25,6 +25,7 @@ module.exports = {
         "m-hero": "1.225rem",
         "m-hero-sm": "0.938rem",
         "d-hero": "2.63rem",
+        3.125: "3.125rem",
       },
 
       screens: {
