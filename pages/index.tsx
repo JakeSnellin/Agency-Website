@@ -8,7 +8,6 @@ import CookiesModal from "@/components/CookiesModal";
 import { useEffect } from "react";
 import { useState } from "react";
 import { setCookie } from "cookies-next";
-import ReactPortal from "@/components/ReactPortal";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -55,8 +54,8 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const checkFeatured = (project: any) => {
-  return project.isFeatured === true;
+const checkFeatured = (projectBlock: any) => {
+  return projectBlock.isFeatured === true;
 };
 
 export default function Home(response: IProjectGrid) {
@@ -64,7 +63,6 @@ export default function Home(response: IProjectGrid) {
 
   const handleClose = (e: any) => {
     localStorage.setItem("seenPopUp", "true");
-    console.log(e.target.textContent);
     e?.target?.textContent === "Accept Cookies"
       ? setCookie("cookie", "true", { maxAge: 31536000 })
       : null;

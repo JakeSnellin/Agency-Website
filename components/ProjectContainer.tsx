@@ -10,7 +10,7 @@ export default function ProjectContainer(response: IProjectGrid) {
           <div
             className={clsx(
               "flex flex-col desktop:flex-row",
-              projectBlock.projects.length < 2
+              projectBlock.projects?.length < 2
                 ? "desktop:justify-center"
                 : "desktop:justify-between"
             )}
