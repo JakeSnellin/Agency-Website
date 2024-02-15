@@ -7,6 +7,7 @@ import Post from "../../components/Post";
 import { useRouter } from "next/router";
 import Modal from "../../components/Modal";
 import PostDesktop from "@/components/Postdesktop";
+import ProgressBar from "@/components/ProgressBar";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -93,6 +94,7 @@ export default function Thought(data: IThoughtPage) {
   return (
     //check here whether to render mobile post or desktop post
     <>
+      <ProgressBar />
       <Modal onClose={() => router.push("/thoughts")}>
         {/*<div className="hidden md:block">
           <PostDesktop data={data}></PostDesktop>
