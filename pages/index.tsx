@@ -1,9 +1,14 @@
 import Hero from "@/components/Hero";
 import ProjectContainer from "@/components/ProjectContainer";
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
 import { IProjectGrid } from "../interfaces/project_interfaces";
+import CookiesModal from "@/components/CookiesModal";
+import { useEffect } from "react";
+import { useState } from "react";
+import { setCookie } from "cookies-next";
+import ReactPortal from "@/components/ReactPortal";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -55,8 +60,31 @@ const checkFeatured = (project: any) => {
 };
 
 export default function Home(response: IProjectGrid) {
+  const [showConsent, setShowConsent] = useState<boolean>(false);
+
+  const handleClose = (e: any) => {
+    localStorage.setItem("seenPopUp", "true");
+    console.log(e.target.textContent);
+    e?.target?.textContent === "Accept Cookies"
+      ? setCookie("cookie", "true", { maxAge: 31536000 })
+      : null;
+    setShowConsent(false);
+  };
+
+  useEffect(() => {
+    let returningUser = localStorage.getItem("seenPopUp");
+    if (returningUser !== null) {
+      setShowConsent(!JSON.parse(returningUser) === true);
+    } else {
+      setShowConsent(true);
+    }
+  }, []);
+
   return (
     <>
+      {showConsent && (
+        <CookiesModal handleClose={handleClose} isOpen={showConsent} />
+      )}
       <div className="desktop:max-w-75.188 desktop:mx-auto">
         <Hero
           title={response.projectGrid.title}

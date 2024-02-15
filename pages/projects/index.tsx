@@ -64,7 +64,9 @@ export default function Projects(response: IProjectGrid) {
           </h5>
         </div>
       </div>
-      <ProjectContainer {...response} />
+      <div className="desktop:max-w-75.188 desktop:mx-auto">
+        <ProjectContainer {...response} />
+      </div>
     </div>
   );
   /*const projects = response.project.projectList.map((project) => (

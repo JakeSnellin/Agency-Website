@@ -134,6 +134,10 @@ module.exports = {
         12: "12%",
       },
 
+      borderRadius: {
+        1.25: "1.25rem",
+      },
+
       fontWeight: {
         250: "250",
         400: "400",

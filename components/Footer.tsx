@@ -32,18 +32,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="menu__link">
-                <Link href="/studio">
-                  <h4 className="text-m4 text-blue font-main">Studio</h4>
-                </Link>
-              </li>
-              <li className="menu__link">
                 <Link href="/thoughts">
                   <h4 className="text-m4 text-blue font-main">Thoughts</h4>
                 </Link>
               </li>
               <li className="menu__link">
-                <Link href="/contact">
-                  <h4 className="text-m4 text-blue font-main">Contact</h4>
+                <Link href="/studio">
+                  <h4 className="text-m4 text-blue font-main">Studio</h4>
                 </Link>
               </li>
             </ul>
