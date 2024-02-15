@@ -1,36 +1,57 @@
+import Hero from "@/components/Hero";
+import ProjectContainer from "@/components/ProjectContainer";
+import React, { SyntheticEvent } from "react";
 import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
-import Image from "next/image";
-import { IProjectItem } from "../interfaces/project_interfaces";
-import { IHero } from "../interfaces/hero_interface";
-import Hero from "../components/Hero";
-import Link from "next/link";
+import { IProjectGrid } from "../interfaces/project_interfaces";
+import CookiesModal from "@/components/CookiesModal";
+import { useEffect } from "react";
+import { useState } from "react";
+import { setCookie } from "cookies-next";
+import ReactPortal from "@/components/ReactPortal";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projectQuery = gql`
-    query Project {
-      project(where: { id: "clhyv0zrjln9j0cmikv5txplr" }) {
+  const homePage = gql`
+    query ProjectGrid {
+      projectGrid(where: { id: "clsemnt0znyem0amoivlwjr0v" }) {
+        title
+        subtitle
         projectList {
-          id
-          slug
-          thumbnail {
-            url
+          ... on ProjectBlock {
+            isFeatured
+            projects {
+              id
+              slug
+              thumbnail {
+                url
+                width
+                height
+              }
+              title
+              disciplines
+              isPortrait
+              imageAlt
+            }
           }
-          title
-          disciplines
-          isFeatured
-          imageAlt
         }
       }
     }
   `;
 
-  const response: IProjectItem = await client.request(projectQuery);
+  const response: IProjectGrid = await client.request(homePage);
+
+  const filteredResponse = {
+    projectGrid: {
+      title: response.projectGrid.title,
+      subtitle: response.projectGrid.subtitle,
+      projectList: response.projectGrid.projectList.filter(checkFeatured),
+    },
+  };
 
   return {
-    props: { ...response },
+    props: { ...filteredResponse },
   };
 };
 
@@ -38,45 +59,39 @@ const checkFeatured = (project: any) => {
   return project.isFeatured === true;
 };
 
-export default function Home(response: IProjectItem, heroResponse: IHero) {
-  const projects = response.project.projectList
-    .filter(checkFeatured)
-    .map((project) => (
-      <Link
-        key={project.id}
-        className="block md:w-[50%]"
-        href={`projects/${project.slug}`}
-      >
-        <div>
-          <div className="w-full">
-            <div className="h-0 pt-[56.25%] relative">
-              <Image
-                src={project.thumbnail.url}
-                alt={project.imageAlt}
-                fill={true}
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          </div>
-          <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
-            <span className="mr-1 text-grey m5 leading-27 pb-2 font-main">
-              Project
-            </span>
-            <h5 className="text-cream m5 inline-block leading-27 pb-2 font-main">
-              {project.title}
-            </h5>
-            <p className="text-grey text-m-caption font-m-caption leading-21 font-main">
-              {project.disciplines}
-            </p>
-          </div>
-        </div>
-      </Link>
-    ));
+export default function Home(response: IProjectGrid) {
+  const [showConsent, setShowConsent] = useState<boolean>(false);
+
+  const handleClose = (e: any) => {
+    localStorage.setItem("seenPopUp", "true");
+    console.log(e.target.textContent);
+    e?.target?.textContent === "Accept Cookies"
+      ? setCookie("cookie", "true", { maxAge: 31536000 })
+      : null;
+    setShowConsent(false);
+  };
+
+  useEffect(() => {
+    let returningUser = localStorage.getItem("seenPopUp");
+    if (returningUser !== null) {
+      setShowConsent(!JSON.parse(returningUser) === true);
+    } else {
+      setShowConsent(true);
+    }
+  }, []);
 
   return (
     <>
-      <Hero />
-      <div className="md:flex md:flex-wrap">{projects}</div>
+      {showConsent && (
+        <CookiesModal handleClose={handleClose} isOpen={showConsent} />
+      )}
+      <div className="desktop:max-w-75.188 desktop:mx-auto">
+        <Hero
+          title={response.projectGrid.title}
+          subtitle={response.projectGrid.subtitle}
+        />
+        <ProjectContainer {...response} />
+      </div>
     </>
   );
 }

@@ -35,26 +35,36 @@ export interface IProjectPage {
 }
 
 export interface IProjectSlug {
-  project: {
+  projectGrid: {
     projectList: {
-      slug: string;
+      projects: {
+        slug: string;
+      }[];
     }[];
   };
 }
 
-export interface IProjectItem {
-  project: {
+export interface IProjectGrid {
+  projectGrid: {
+    title: string;
+    subtitle: string;
     projectList: {
-      id: string;
-      slug: string;
-      thumbnail: {
-        url: string;
-      };
-      title: string;
-      disciplines: string;
-      isFeatured: boolean;
-      imageAlt: string;
+      projects: {
+        id: string;
+        slug: string;
+        thumbnail: {
+          url: string;
+          width: number;
+          height: number;
+        };
+        title: string;
+        disciplines: string;
+        isFeatured: boolean;
+        isPortrait: boolean;
+        imageAlt: string;
+      }[];
     }[];
   };
   projectCount: number;
+  featuredProjects: {};
 }

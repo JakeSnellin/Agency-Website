@@ -5,8 +5,8 @@ import { IProjectProps } from "./Project";
 export default function Process({ data }: IProjectProps) {
   return (
     <>
-      <div className="mb-4 pt-74 md:pt-[146px] w-full md:flex md:justify-between md:mb-[125px]">
-        <h2 className="text-m2 font-250 leading-31.5 md:text-h2 md:leading-[52.8px]">
+      <div className="pt-74 md:pt-[146px] w-full md:flex md:justify-between md:mb-[125px]">
+        <h2 className="mb-4 text-m2 font-250 leading-31.5 md:text-h2 md:leading-[52.8px]">
           Process
         </h2>
         <h4 className="text-m4 font-250 leading-28.2 pb-94 md:w-[53.87755102040816%] md:pb-0 md:text-h4 md:leading-9">
@@ -56,7 +56,7 @@ export default function Process({ data }: IProjectProps) {
           {data.projectPage.taskDescription}
         </p>
       </div>
-      <div className="mr-28 md:clear-both md:w-[42.44897959183673%] float-right md:mr-[115px]">
+      <div className="mr-28 md:clear-both md:w-[42.44897959183673%] md:float-right md:mr-[115px]">
         <div className="w-full h-0 pt-[56.15384615384615%] relative mb-14 md:pt-[56.25%]">
           <Image
             src={data.projectPage.processImages[3].image.url}

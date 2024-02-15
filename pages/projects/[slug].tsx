@@ -6,6 +6,7 @@ import Image from "next/image";
 import Modal from "../../components/Modal";
 import { useRouter } from "next/router";
 import Project from "../../components/Project";
+import ProgressBar from "@/components/ProgressBar";
 
 const client = new GraphQLClient(process.env.HYGRAPH_URL as string);
 
@@ -72,10 +73,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const query = gql`
-    query Project {
-      project(where: { id: "clhyv0zrjln9j0cmikv5txplr" }) {
+    query ProjectGrid {
+      projectGrid(where: { id: "clsemnt0znyem0amoivlwjr0v" }) {
         projectList {
-          slug
+          ... on ProjectBlock {
+            projects {
+              slug
+            }
+          }
         }
       }
     }
@@ -83,9 +88,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const response: IProjectSlug = await client.request(query);
 
-  const paths = response.project.projectList.map((project) => ({
-    params: { slug: project.slug },
-  }));
+  const rawPaths = response.projectGrid.projectList.map((projectBlock) =>
+    projectBlock.projects.map((project) => ({ params: { slug: project.slug } }))
+  );
+
+  const paths = rawPaths.flat();
 
   return {
     paths: paths,
@@ -98,7 +105,7 @@ export default function ProjectPage(data: IProjectPage) {
 
   return (
     <div className="font-main">
-      <div className="w-full h-1 bg-orange"></div>
+      <ProgressBar />
       <Modal onClose={() => router.push("/projects")}>
         <Project data={data} />
       </Modal>

@@ -22,6 +22,14 @@ module.exports = {
         h5: "1.125rem",
         body: "1rem",
         caption: "0.875rem",
+        "m-hero": "1.225rem",
+        "m-hero-sm": "0.938rem",
+        "d-hero": "2.63rem",
+        3.125: "3.125rem",
+      },
+
+      screens: {
+        desktop: "1440px",
       },
 
       lineHeight: {
@@ -34,6 +42,11 @@ module.exports = {
         27.6: "27.6px",
         35.52: "35.52px",
         28.2: "28.2px",
+        1.6: "1.6em",
+      },
+
+      letterSpacing: {
+        0.5: "0.5em",
       },
 
       height: {
@@ -47,6 +60,9 @@ module.exports = {
         579: "36.188rem",
         617: "38.563rem",
         612: "38.25rem",
+        5.25: "5.25rem",
+        6.75: "6.75rem",
+        12.625: "12.625rem",
       },
 
       width: {
@@ -55,6 +71,13 @@ module.exports = {
         56: "3.375rem",
         21: "1.313rem",
         1440: "90rem",
+        52.9: "52.9%",
+        81.4: "81.4%",
+        77.2: "77.2%",
+        65.5: "62.188rem",
+        90: "90%",
+        6.483: "6.483rem",
+        12.125: "12.125rem",
       },
 
       colors: {
@@ -70,6 +93,10 @@ module.exports = {
         "grey-5": "#6B6B6B",
         "grey-6": "#828282",
         "grey-7": "#F2F2F2",
+      },
+
+      backgroundColor: {
+        "grey-line": "#454545",
       },
 
       margin: {
@@ -94,6 +121,21 @@ module.exports = {
         33: "33px",
         28: "28px",
         64: "64px",
+        93: "93px",
+        157: "157px",
+        44: "44px",
+        111: "111px",
+        114: "114px",
+        70: "70px",
+        11.38: "11.38%",
+        252: "252px",
+        230: "230px",
+        182: "182px",
+        12: "12%",
+      },
+
+      borderRadius: {
+        1.25: "1.25rem",
       },
 
       fontWeight: {
@@ -104,6 +146,18 @@ module.exports = {
 
       minWidth: {
         hero: "15.938rem",
+        13.313: "13.313rem",
+      },
+
+      maxWidth: {
+        33.25: "33.25%",
+        50.6: "50.6%",
+        70.9: "70.9%",
+        58.75: "58.75rem",
+        27.125: "27.125rem",
+        31: "31rem",
+        65.5: "65.5rem",
+        75.188: "75.188rem",
       },
 
       padding: {
@@ -119,16 +173,26 @@ module.exports = {
         81: "81px",
         97: "97px",
         12: "12px",
+        133.7: "133.7%",
+        57.7: "57.7%",
+        124: "124px",
+        26: "26px",
+        54: "54px",
+        311: "311px",
+        389: "389px",
       },
 
       fontFamily: {
         main: ["LabGrotesque-Thin"],
-        hero: ["Fahkwang-Light"],
+        "labgrotesque-light": ["LabGrotesque-Light"],
+        "fahkwang-extralight": ["Fahkwang-ExtraLight"],
+        "fahkwang-light": ["Fahkwang-Light"],
       },
 
       gap: {
         35: "35px",
         17: "17px",
+        36: "36px",
       },
     },
   },

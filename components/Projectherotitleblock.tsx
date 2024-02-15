@@ -8,8 +8,8 @@ function createMarkup(c: string) {
 export default function ProjectHeroTitleBlock({ data }: IProjectProps) {
   return (
     <div className="md:w-full">
-      <h1 className="text-blue leading-35.52 font-250 text-m1 mb-4 mt-12 md:text-h1 md:leading-[70.4px] md:mb-[60px] md:pl-[20.22058823529412%]">
-        {data.projectPage.projectHeading}
+      <h1 className="text-blue font-fahkwang-extralight md:font-[275] md:tracking-[0.48em] text-right leading-35.52 font-250 text-m1 mb-4 md:text-3.125 md:leading-[71px] md:mb-[60px] md:pl-[20.22058823529412%]">
+        {data.projectPage.projectHeading.toUpperCase()}
       </h1>
       <hr className="border-t-[0.5px] border-white mb-4 md:border-dashed md:mb-8"></hr>
       <div className="md:flex md:shrink-0 md:gap-[18.38235294117647%] mb-[84px]">
