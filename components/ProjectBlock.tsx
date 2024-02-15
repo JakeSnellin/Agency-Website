@@ -7,11 +7,11 @@ import Link from "next/link";
 export default function ProjectBlock({ projectBlock }: any) {
   return (
     <>
-      {projectBlock.projects.map((project: any) => (
+      {projectBlock.projects?.map((project: any) => (
         <div
           className={clsx(
             "w-full",
-            projectBlock.projects.length < 2
+            projectBlock.projects?.length < 2
               ? "desktop:max-w-70.9"
               : project.isPortrait
               ? "desktop:max-w-33.25 desktop:mt-157"

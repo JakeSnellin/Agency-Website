@@ -59,6 +59,7 @@ const checkFeatured = (projectBlock: any) => {
 };
 
 export default function Home(response: IProjectGrid) {
+  console.log(response);
   const [showConsent, setShowConsent] = useState<boolean>(false);
 
   const handleClose = (e: any) => {
