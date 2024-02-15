@@ -14,14 +14,14 @@ export default function ProjectBlock({ projectBlock }: any) {
             projectBlock.projects.length < 2
               ? "desktop:max-w-70.9"
               : project.isPortrait
-              ? "desktop:max-w-37.9 desktop:mt-157"
+              ? "desktop:max-w-33.25 desktop:mt-157"
               : "desktop:max-w-50.6"
           )}
         >
           <Link href={`projects/${project.slug}`}>
             <div
               className={clsx(
-                project.isPortrait ? "w-52.9 desktop:w-81.4" : "w-full"
+                project.isPortrait ? "w-52.9 desktop:w-full" : "w-full"
               )}
             >
               <div

@@ -57,11 +57,13 @@ const checkFeatured = (project: any) => {
 export default function Home(response: IProjectGrid) {
   return (
     <>
-      <Hero
-        title={response.projectGrid.title}
-        subtitle={response.projectGrid.subtitle}
-      />
-      <ProjectContainer {...response} />
+      <div className="desktop:max-w-75.188 desktop:mx-auto">
+        <Hero
+          title={response.projectGrid.title}
+          subtitle={response.projectGrid.subtitle}
+        />
+        <ProjectContainer {...response} />
+      </div>
     </>
   );
 }

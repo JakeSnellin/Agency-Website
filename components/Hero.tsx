@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Hero({ title, subtitle }: any) {
   return (
-    <div className="w-77.2 ml-44 desktop:ml-164 font-fahkwang-extralight text-blue pt-124 desktop:pt-311 pb-26 desktop:pb-54">
+    <div className="w-77.2 ml-44 desktop:ml-[45.5px] font-fahkwang-extralight text-blue pt-124 desktop:pt-311 pb-26 desktop:pb-54">
       <div className="mb-111 desktop:mb-252">
         <h1 className="text-m-hero desktop:text-d-hero max-w-58.75 leading-1.6 tracking-0.5">
           {title}
