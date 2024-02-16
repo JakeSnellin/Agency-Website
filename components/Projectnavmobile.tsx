@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProjectNavMobile() {
   return (
-    <div className="bg-grey-4 relative">
+    <div className="bg-grey-4">
       <div className="absolute bottom-0 left-0 bg-grey-3 h-px w-full"></div>
       <ul className="flex font-main text-blue pt-12 pl-23 gap-35">
         <li className="h-10 relative">

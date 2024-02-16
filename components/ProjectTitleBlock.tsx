@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProjectTitleBlock({ project }: any) {
   return (
-    <div className="pt-18 pr-4 pb-65 bg-gradient-to-b">
+    <div className="pt-18 pr-4 pb-65">
       <span className="mr-1 text-grey text-m4 leading-27 pb-2 font-main">
         Project
       </span>

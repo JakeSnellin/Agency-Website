@@ -27,8 +27,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const response: IThought = await client.request(thoughtQuery);
 
-  console.log(response);
-
   let thoughtCount: number = 0;
 
   response.thought.thoughtList.forEach(() => {
@@ -61,7 +59,7 @@ export default function Thoughts(response: IThought) {
             />
           </div>
         </div>
-        <div className="pt-18 pl-4 pr-4 pb-65 bg-gradient-to-b from-[#212121] to-[#121212]">
+        <div className="pt-18 pl-4 pr-4 pb-65">
           <h5 className="text-cream m5 inline-block leading-27 pb-2 font-main">
             {thought.postHeading && thought.postHeading}
           </h5>
@@ -75,7 +73,7 @@ export default function Thoughts(response: IThought) {
 
   return (
     <div>
-      <div className="flex mr-4 ml-17 items-center justify-between mt-77 mb-26 md:ml-[12.22222222222222%] md:mr-[4.375%] md:mb-0 md:mt-0 md:h-[144px]">
+      <div className="flex mr-4 ml-17 items-center justify-between mt-77 mb-26 md:ml-[12.2%] md:mr-[4.375%] md:mb-0 md:mt-0 md:h-[144px]">
         <div className="md:self-start md:mt-[22px]">
           <h3 className="text-m3 text-blue font-main leading-27.6 font-250">
             All thoughts
