@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
-import { useRef } from "react";
-//import { useWindowScroll } from "@uidotdev/usehooks";
 import { useState } from "react";
 import useScrollPosition from "../hooks/useScrollPosition";
 
 export default function ProgressBar() {
-  //const [{ x, y }] = useWindowScroll();
   const scrollPosition = useScrollPosition();
   const [width, setWidth] = useState<number | null>(0);
 
@@ -24,8 +21,6 @@ export default function ProgressBar() {
     const percentageScrolled = scrollPosition
       ? (scrollPosition / offsetHeight) * 100
       : 0;
-
-    console.log(percentageScrolled + " %");
 
     setWidth(percentageScrolled);
   }, [scrollPosition]);

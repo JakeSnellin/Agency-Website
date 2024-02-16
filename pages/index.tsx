@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import ProjectContainer from "@/components/ProjectContainer";
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import { GetStaticProps } from "next";
 import { gql, GraphQLClient } from "graphql-request";
 import { IProjectGrid } from "../interfaces/project_interfaces";
@@ -59,7 +59,6 @@ const checkFeatured = (projectBlock: any) => {
 };
 
 export default function Home(response: IProjectGrid) {
-  console.log(response);
   const [showConsent, setShowConsent] = useState<boolean>(false);
 
   const handleClose = (e: any) => {

@@ -17,6 +17,9 @@ export default function Project({ data }: IProjectProps) {
     <>
       <div className="block md:hidden">
         <ProjectImageBannerMobile data={data} />
+      </div>
+
+      <div className="sticky top-0 z-[30] block md:hidden">
         <ProjectNavMobile />
       </div>
 
@@ -25,7 +28,7 @@ export default function Project({ data }: IProjectProps) {
       </div>
 
       <div className="md:flex md:mt-[104px] md:gap-[72px] md:justify-between">
-        <div className="hidden md:block">
+        <div className="hidden md:block sticky top-0 z-[30]">
           <ProjectNavDesktop />
         </div>
         <div className="mr-4 ml-4 md:mr-[64px] md:ml-0">
